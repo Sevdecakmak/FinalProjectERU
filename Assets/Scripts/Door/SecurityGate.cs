@@ -10,11 +10,12 @@ public class SecurityGate : MonoBehaviour
     public GameObject doorAnim;
     public AudioSource doorSound;
     public GameObject activeCross;
-    KeyManager key;
+    GetKey key;
+
 
     private void Start()
     {
-        key = FindObjectOfType<KeyManager>();
+        key = FindObjectOfType<GetKey>();
     }
 
 
@@ -40,7 +41,7 @@ public class SecurityGate : MonoBehaviour
             actionText.SetActive(false);
         }
 
-        if (Input.GetButton("Action") && key.isKeyObtained == true)
+        if (Input.GetButton("Action") && key.isKeyTaken==true)
         {
             if (theDistance <= 2)
             {
