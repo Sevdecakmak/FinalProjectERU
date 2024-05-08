@@ -8655,8 +8655,9 @@ GameObject:
   - component: {fileID: 1437419601}
   - component: {fileID: 1437419600}
   - component: {fileID: 1437419599}
+  - component: {fileID: 1437419603}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8750,6 +8751,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1437419603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437419598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0230a1a9e78c147b097f079c6eb70882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 100
 --- !u!4 &1440128504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3045858640639488181, guid: 1a95f0e5a282c4412a4626dd7d1a97ea, type: 3}
@@ -13627,6 +13641,7 @@ MonoBehaviour:
   currentAmmo: 100
   rateOfFire: 0
   weaponRangre: 50
+  damage: 20
   shootPoint: {fileID: 2141343291}
 --- !u!1 &2141343290
 GameObject:
