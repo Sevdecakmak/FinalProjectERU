@@ -9,17 +9,22 @@ public class Pistol : MonoBehaviour
     [SerializeField]
     int currentAmmo;
 
+    [SerializeField]
     float rateOfFire; //ne kadar sürede bir ateş edebileceğimi hesaplamak için
     float nextFire =0;
 
     [SerializeField]
     float weaponRangre;
 
+    public float damage = 20f;
+
     public Transform shootPoint;
+
+    EnemyHealth enemy;
 
     void Start()
     {
-        
+        enemy = FindObjectOfType<EnemyHealth>();
     }
 
     
@@ -42,7 +47,7 @@ public class Pistol : MonoBehaviour
               {
                 if (hit.transform.tag == "Enemy")
                 {
-                    Debug.Log("hit enemy");
+                    enemy.ReduceHealth(damage);
                 }
                 else
                 {
