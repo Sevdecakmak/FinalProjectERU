@@ -498,6 +498,7 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/_AssetPacks/_AssetPacks/Stylized Weapon Pack/M4 Scoped Assault Rifle/Scripts/GunfireController.cs"
 "Assets/_Barking_Dog/Common Scripts/MouseLook.cs"
 "Assets/_Barking_Dog/Common Scripts/Turn_Move.cs"
 -langversion:9.0

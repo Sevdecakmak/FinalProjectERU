@@ -6,6 +6,14 @@ public class Pistol : MonoBehaviour
 {
     RaycastHit hit; //mesafe ayarlama gibi
 
+
+    public ParticleSystem muzzleFlash;
+    Animator anim;
+
+    AudioSource pistolAS;
+    public AudioClip shootAC; //müzik dosyasında problem var
+
+
     [SerializeField]
     int currentAmmo;
 
@@ -24,6 +32,10 @@ public class Pistol : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+
+        pistolAS = GetComponent<AudioSource>();
+        muzzleFlash.Stop(); //oyun başladığında çalışmasın
         enemy = FindObjectOfType<EnemyHealth>();
     }
 
@@ -36,12 +48,14 @@ public class Pistol : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         if(Time.time > nextFire) //oyundaki süre
         {
             nextFire = Time.time + rateOfFire;
+            anim.SetTrigger("Shoot");
             currentAmmo--;
+            
 
             if(Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, weaponRangre)) //bi ray çıkacak bu bir yere çarpıyor mu kontrol eder
               {
@@ -56,5 +70,13 @@ public class Pistol : MonoBehaviour
             }
             
         }
+    }
+
+     IEnumerator pistolEffect()
+    {
+        muzzleFlash.Play();
+        pistolAS.PlayOneShot(shootAC);
+        yield return new WaitForEndOfFrame(); //frame bittiği anda oynasın bitsin ateş efekti
+        muzzleFlash.Stop();
     }
 }
