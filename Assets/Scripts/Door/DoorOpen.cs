@@ -40,7 +40,7 @@ public class DoorOpen : MonoBehaviour
                 this.gameObject.GetComponent<BoxCollider>().enabled = false; //var olmaz
                 actionKey.SetActive(true);
                 actionText.SetActive(true);
-                hinge.GetComponent<Animation>().Play("MyDoorAnm1");
+                hinge.GetComponent<Animation>().Play("OppositeDoor");
                 hinge.GetComponent<Animation>().Play("OppositeDoor");
                 doorSound.Play();
             }

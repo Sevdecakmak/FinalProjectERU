@@ -12,10 +12,15 @@ public class Pistol : MonoBehaviour
 
     AudioSource pistolAS;
     public AudioClip shootAC; //müzik dosyasında problem var
+    public AudioClip emptyFire;
 
 
-    [SerializeField]
-    int currentAmmo;
+    
+    public int currentAmmo=12; //mermi
+    public int maxAmmo=12; //şarjörün kapasitesi
+    public int carriedAmmo=60; //taşınabilen mermi
+
+    bool isReloding;
 
     [SerializeField]
     float rateOfFire; //ne kadar sürede bir ateş edebileceğimi hesaplamak için
@@ -46,6 +51,16 @@ public class Pistol : MonoBehaviour
         {
             Shoot();
         }
+        else if(Input.GetButton("Fire1") && currentAmmo <= 0 && !isReloding)
+        {
+            EmptyFire();
+        }
+
+        else if(Input.GetKeyDown(KeyCode.R) && currentAmmo <= maxAmmo && !isReloding)
+        {
+            isReloding = true;
+            Reload();
+        }
     }
 
     public void Shoot()
@@ -57,26 +72,70 @@ public class Pistol : MonoBehaviour
             currentAmmo--;
             
 
-            if(Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, weaponRangre)) //bi ray çıkacak bu bir yere çarpıyor mu kontrol eder
-              {
-                if (hit.transform.tag == "Enemy")
-                {
-                    enemy.ReduceHealth(damage);
-                }
-                else
-                {
-                    Debug.Log("Something else");
-                }
-            }
-            
+         
         }
     }
 
-     IEnumerator pistolEffect()
+    void ShootRay()
+    {
+        if (Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, weaponRangre)) //bi ray çıkacak bu bir yere çarpıyor mu kontrol eder
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                enemy.ReduceHealth(damage);
+            }
+            else
+            {
+                Debug.Log("Something else");
+            }
+        }
+
+    }
+
+
+    void Reload()
+    {
+        if (carriedAmmo <= 0) return;
+        anim.SetTrigger("Reload");
+        StartCoroutine(ReloadCountDown(2f));
+    }
+
+    void EmptyFire()
+    {
+        if(Time.time> nextFire)
+        {
+            nextFire = Time.time + rateOfFire;
+            pistolAS.PlayOneShot(emptyFire);
+            anim.SetTrigger("Empty");
+        }
+    }
+
+
+    IEnumerator pistolEffect()
     {
         muzzleFlash.Play();
         pistolAS.PlayOneShot(shootAC);
         yield return new WaitForEndOfFrame(); //frame bittiği anda oynasın bitsin ateş efekti
         muzzleFlash.Stop();
+    }
+
+    IEnumerator ReloadCountDown(float timer)
+    {
+        while (timer > 0f)
+        {
+            
+            timer -= Time.deltaTime; //1 er sn azaltma
+            yield return null;
+        }
+        if (timer <= 0)
+        {
+            isReloding = false;
+            int bulletNeeded= maxAmmo- currentAmmo; //
+            int bulletsToDeduct = (carriedAmmo >= bulletNeeded) ? bulletNeeded : carriedAmmo;
+            //if else düşecek mermi sayısı bulletsToDeduct
+
+            carriedAmmo -= bulletsToDeduct;
+            currentAmmo += bulletsToDeduct;
+        }
     }
 }
