@@ -13,6 +13,8 @@ public class GetPistol : MonoBehaviour
     public GameObject pistolInActive;
     public GameObject pistolActive;
 
+    public GameObject ammoPanel;
+
     
 
     void Update()
@@ -44,6 +46,7 @@ public class GetPistol : MonoBehaviour
 
                 actionKey.SetActive(true);
                 pistolActive.SetActive(true);
+                ammoPanel.SetActive(true);
 
 
 

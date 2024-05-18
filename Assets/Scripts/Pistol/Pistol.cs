@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pistol : MonoBehaviour
 {
@@ -35,13 +36,18 @@ public class Pistol : MonoBehaviour
 
     EnemyHealth enemy;
 
+    public Text currentAmmoText;
+    public Text carriedAmmoText;
+
     void Start()
     {
+        UpdateAmmoUI();
         anim = GetComponent<Animator>();
 
         pistolAS = GetComponent<AudioSource>();
         muzzleFlash.Stop(); //oyun başladığında çalışmasın
         enemy = FindObjectOfType<EnemyHealth>();
+
     }
 
     
@@ -70,8 +76,9 @@ public class Pistol : MonoBehaviour
             nextFire = Time.time + rateOfFire;
             anim.SetTrigger("Shoot");
             currentAmmo--;
-            
 
+            ShootRay();
+            UpdateAmmoUI();
          
         }
     }
@@ -98,6 +105,13 @@ public class Pistol : MonoBehaviour
         if (carriedAmmo <= 0) return;
         anim.SetTrigger("Reload");
         StartCoroutine(ReloadCountDown(2f));
+    }
+
+
+    public void UpdateAmmoUI()
+    {
+        currentAmmoText.text = currentAmmo.ToString();
+        carriedAmmoText.text = carriedAmmo.ToString();
     }
 
     void EmptyFire()
@@ -136,6 +150,8 @@ public class Pistol : MonoBehaviour
 
             carriedAmmo -= bulletsToDeduct;
             currentAmmo += bulletsToDeduct;
+
+            UpdateAmmoUI();
         }
     }
 }
