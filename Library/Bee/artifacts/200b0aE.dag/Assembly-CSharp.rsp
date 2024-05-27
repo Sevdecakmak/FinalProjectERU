@@ -374,6 +374,7 @@
 "Assets/Scripts/Manager/KeyManager.cs"
 "Assets/Scripts/Pistol/GetPistol.cs"
 "Assets/Scripts/Pistol/Pistol.cs"
+"Assets/Scripts/Player/PlayerHealth.cs"
 "Assets/Scripts/Player/PlayerRay.cs"
 "Assets/Standard+Assets/2D/Scripts/Camera2DFollow.cs"
 "Assets/Standard+Assets/2D/Scripts/CameraFollow.cs"

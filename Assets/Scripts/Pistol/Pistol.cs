@@ -34,7 +34,7 @@ public class Pistol : MonoBehaviour
 
     public Transform shootPoint;
 
-    EnemyHealth enemy;
+    //EnemyHealth enemy;
 
     public Text currentAmmoText;
     public Text carriedAmmoText;
@@ -46,7 +46,7 @@ public class Pistol : MonoBehaviour
 
         pistolAS = GetComponent<AudioSource>();
         muzzleFlash.Stop(); //oyun başladığında çalışmasın
-        enemy = FindObjectOfType<EnemyHealth>();
+     //   enemy = FindObjectOfType<EnemyHealth>();
 
     }
 
@@ -89,6 +89,7 @@ public class Pistol : MonoBehaviour
         {
             if (hit.transform.tag == "Enemy")
             {
+                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>(); //49. satırdaki düzeltme
                 enemy.ReduceHealth(damage);
             }
             else

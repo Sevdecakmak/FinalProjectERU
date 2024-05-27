@@ -94,6 +94,7 @@
     <Compile Include="Assets/Standard+Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonCharacter.cs" />
     <Compile Include="Assets/Ciconia+Studio/_Shared Files/Scripts/Demo/FreeCam.cs" />
     <Compile Include="Assets/Scripts/Enemy/EnemyAI.cs" />
+    <Compile Include="Assets/Scripts/Player/PlayerHealth.cs" />
     <Compile Include="Assets/Standard+Assets/Vehicles/Aircraft/Scripts/AeroplanePropellerAnimator.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
     <Compile Include="Assets/Standard+Assets/Utility/DynamicShadowSettings.cs" />

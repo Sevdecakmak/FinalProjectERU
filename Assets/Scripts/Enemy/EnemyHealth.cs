@@ -26,14 +26,15 @@ public class EnemyHealth : MonoBehaviour
         //canın ne kadar azaldığını belirtmek
 
         //hasar aldığında
-        enemy.Hurt();
+        enemyHealth -= reduceHealth;
+        
 
         if (!enemy.isDead)
         {
             enemy.Hurt();
         }
       
-        enemyHealth -= reduceHealth;
+        
         if(enemyHealth <= 0)
         {
             enemy.DeadAnim();
@@ -43,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Dead()
     {
+        enemy.canAttack = false;
         Destroy(gameObject, 10f);
     }
 }
