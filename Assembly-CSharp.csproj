@@ -187,6 +187,7 @@
     <Compile Include="Assets/Standard+Assets/Cameras/Scripts/TargetFieldOfView.cs" />
     <Compile Include="Assets/Scripts/Ammo/GetAmmo.cs" />
     <Compile Include="Assets/Standard+Assets/ParticleSystems/Scripts/AfterburnerPhysicsForce.cs" />
+    <Compile Include="Assets/Scripts/Paper.cs" />
     <Compile Include="Assets/Standard+Assets/Utility/ForcedReset.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
     <Compile Include="Assets/Standard+Assets/Vehicles/Aircraft/Scripts/AeroplaneUserControl2Axis.cs" />

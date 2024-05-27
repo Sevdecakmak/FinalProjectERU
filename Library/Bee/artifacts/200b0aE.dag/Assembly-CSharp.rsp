@@ -375,6 +375,7 @@
 "Assets/Scripts/Key/GetKey.cs"
 "Assets/Scripts/Manager/KeyManager.cs"
 "Assets/Scripts/MedKit.cs"
+"Assets/Scripts/Paper.cs"
 "Assets/Scripts/Pistol/GetPistol.cs"
 "Assets/Scripts/Pistol/Pistol.cs"
 "Assets/Scripts/Player/PlayerHealth.cs"
