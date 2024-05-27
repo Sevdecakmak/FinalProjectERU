@@ -38,6 +38,7 @@ public class GetAmmo : MonoBehaviour
         else
         {
             actionKey.SetActive(false);
+            activeCross.SetActive(false);
 
         }
 

@@ -5,19 +5,16 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-
     NavMeshAgent agent;
     Animator anim;
-    Transform target; //fps
+    Transform target; // fps
     public bool isDead = false;
     public float turnSpeed;
     public float damage = 25f;
-
     public bool canAttack;
     [SerializeField]
     float attackTimer = 2f;
 
-    
     void Start()
     {
         canAttack = true;
@@ -26,34 +23,32 @@ public class EnemyAI : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
-        //bu script zombinin içinde olacağı için kendi pozisyonu ile bizim pozisyonumuz arasındaki mesafeyi alacak
+        // bu script zombinin içinde olacağı için kendi pozisyonu ile bizim pozisyonumuz arasındaki mesafeyi alacak
 
-        if(distance <10 && distance > agent.stoppingDistance && !isDead)
+        if (distance < 10 && distance > agent.stoppingDistance && !isDead)
         {
-            //bizi kovalasın istiyoruz
-            //ilk önce pozisyonumuzu güncelleyeceğiz
-            //ölü ikende takip etmemesi adına bir bool oluşturacağız
+            // bizi kovalasın istiyoruz
+            // ilk önce pozisyonumuzu güncelleyeceğiz
+            // ölü iken de takip etmemesi adına bir bool oluşturacağız
 
             ChasePlayer();
         }
-        else if(distance <=agent.stoppingDistance && canAttack)
+        else if (distance <= agent.stoppingDistance && canAttack)
         {
-            //yönü bize dönsün istiyoruz enemy nin
+            // yönü bize dönsün istiyoruz enemy nin
             agent.updateRotation = false;
             Vector3 direction = target.position - transform.position;
             direction.y = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
 
-
             agent.updatePosition = false;
             anim.SetBool("isWalking", false);
             anim.SetBool("Attack", true);
         }
-        else if(distance > 10)
+        else if (distance > 10)
         {
             StopChase();
         }
@@ -61,7 +56,7 @@ public class EnemyAI : MonoBehaviour
 
     void StopChase()
     {
-        //kovalamayı bırkasın
+        // kovalamayı bıraksın
         agent.updatePosition = false;
         anim.SetBool("isWalking", false);
         anim.SetBool("Attack", false);
@@ -69,32 +64,30 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        agent.updateRotation = true;
-        agent.updatePosition = true;
-        agent.SetDestination(target.position); //bize doğru gelecek
+       // if (agent.isActiveAndEnabled && agent.isOnNavMesh) {} 
+            agent.updateRotation = true;
+            agent.updatePosition = true;
+            agent.SetDestination(target.position); // bize doğru gelecek
 
-        anim.SetBool("isWalking", true);
-        anim.SetBool("Attack", false);
+            anim.SetBool("isWalking", true);
+            anim.SetBool("Attack", false);
+        
     }
 
     void AttackPlayer()
     {
-
         PlayerHealth.PH.DamagePlayer(damage);
 
         // PlayerHealth.PH.DamagePlayer(damage); // bu şekilde devamlı hasar veriyor ama biz animasyon ile hasar versin istiyoruz.
 
-        //StartCoroutine(AttackTime());
-
+        // StartCoroutine(AttackTime());
     }
-
 
     public void Hurt()
     {
         agent.enabled = false;
         anim.SetTrigger("Hit");
         StartCoroutine(Nav());
-
     }
 
     public void DeadAnim()

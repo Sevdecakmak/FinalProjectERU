@@ -43,6 +43,9 @@ public class Pistol : MonoBehaviour
     public Text currentAmmoText;
     public Text carriedAmmoText;
 
+
+    public GameObject bloodEffect;
+
     void Start()
     {
         UpdateAmmoUI();
@@ -94,12 +97,14 @@ public class Pistol : MonoBehaviour
             if (hit.transform.tag == "Enemy")
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>(); //49. satırdaki düzeltme
+                
+                Instantiate(bloodEffect, hit.point, transform.rotation); //kan efektimizin oluştuğu kısım
                 enemy.ReduceHealth(damage);
             }
             else if (hit.transform.tag == "Metal")
             {
                 pistolAS.PlayOneShot(shootMetalAC);
-                Instantiate(metalBulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal)); //nesne üretme
+                Instantiate(metalBulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal)); //nesne üretme mermi izi duvarda
             }
             else
             {

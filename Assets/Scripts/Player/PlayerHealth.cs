@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void UpdateText() 
+    public void UpdateText() 
     {
         //health textimizi güncellediğimiz kısım
         healthText.text = currentHealt.ToString();
