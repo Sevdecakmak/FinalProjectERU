@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public Color damageColor;
     public Image damageImage;
     bool isTakinDamage= false;
-    float colorSpeed = 5f;
+    public float colorSpeed = 5f;
 
 
     public bool isDead=false;
@@ -49,8 +49,10 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, 5 * Time.deltaTime); // kan efektinin yavaş yavaş gitmesini sağlar
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, colorSpeed * Time.deltaTime); // kan efektinin yavaş yavaş gitmesini sağlar
         }
+
+        isTakinDamage = false; //hasar almadığım kısım
     }
 
     public void DamagePlayer(float damage)
@@ -74,7 +76,7 @@ public class PlayerHealth : MonoBehaviour
                 UpdateText();
 
             }
-            isTakinDamage = false; //hasar almadığım kısım
+            
         }
     }
 

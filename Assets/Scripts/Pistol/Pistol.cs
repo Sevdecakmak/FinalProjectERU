@@ -23,6 +23,10 @@ public class Pistol : MonoBehaviour
 
     bool isReloding;
 
+
+    public GameObject metalBulletHole; // duvarda oluşan metal obje 
+    public AudioClip shootMetalAC; // duvara ateş ettiğindeki metal ses
+
     [SerializeField]
     float rateOfFire; //ne kadar sürede bir ateş edebileceğimi hesaplamak için
     float nextFire =0;
@@ -91,6 +95,11 @@ public class Pistol : MonoBehaviour
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>(); //49. satırdaki düzeltme
                 enemy.ReduceHealth(damage);
+            }
+            else if (hit.transform.tag == "Metal")
+            {
+                pistolAS.PlayOneShot(shootMetalAC);
+                Instantiate(metalBulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal)); //nesne üretme
             }
             else
             {
