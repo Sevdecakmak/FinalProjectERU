@@ -7,6 +7,8 @@ TagManager:
   - Key1
   - Enemy
   - Metal
+  - Object
+  - KeyPad
   layers:
   - Default
   - TransparentFX

@@ -143,6 +143,7 @@
     <Compile Include="Assets/Standard+Assets/Utility/LerpControlledBob.cs" />
     <Compile Include="Assets/Standard+Assets/CrossPlatformInput/Scripts/TiltInput.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventCheck.cs" />
+    <Compile Include="Assets/Scripts/DoorController.cs" />
     <Compile Include="Assets/Standard+Assets/Environment/Water/Water/Scripts/MeshContainer.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerRay.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Assets/Standard+Assets/Characters/FirstPersonCharacter/Scripts/FirstPersonController.cs" />
     <Compile Include="Assets/Standard+Assets/ParticleSystems/Scripts/ParticleSystemMultiplier.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
+    <Compile Include="Assets/Scripts/KeyPad.cs" />
     <Compile Include="Assets/Standard+Assets/Cameras/Scripts/ProtectCameraFromWallClip.cs" />
     <Compile Include="Assets/Standard+Assets/Vehicles/Aircraft/Scripts/AeroplaneController.cs" />
     <Compile Include="Assets/Standard+Assets/ParticleSystems/Scripts/SmokeParticles.cs" />
