@@ -190,6 +190,7 @@
     <Compile Include="Assets/Scripts/Paper.cs" />
     <Compile Include="Assets/Standard+Assets/Utility/ForcedReset.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
+    <Compile Include="Assets/Scripts/InspectManager.cs" />
     <Compile Include="Assets/Standard+Assets/Vehicles/Aircraft/Scripts/AeroplaneUserControl2Axis.cs" />
     <Compile Include="Assets/Standard+Assets/Vehicles/Car/Scripts/Suspension.cs" />
     <Compile Include="Assets/Standard+Assets/ParticleSystems/Scripts/WaterHoseParticles.cs" />
